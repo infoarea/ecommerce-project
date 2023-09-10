@@ -1,0 +1,15 @@
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag-list a {
+  color: #333;
+  font-size: 13px;
+  border: 1px solid #000;
+  margin: 3px;
+  padding: 7px;
+}
+.tag-list a:hover {
+  color: white;
+  background: #333;
+}
