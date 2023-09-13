@@ -40,3 +40,4 @@ const storage = multer.diskStorage({
 
 export const brandLogo = multer({ storage }).single("logo");
 export const categoryPhoto = multer({ storage }).single("catPhoto");
+export const productPhoto = multer({ storage }).array("productPhoto");

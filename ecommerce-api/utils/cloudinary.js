@@ -16,6 +16,11 @@ export const cloudinaryUpload = async (req) => {
   return data;
 };
 
+export const cloudinaryUploads = async (path) => {
+  const data = await cloudinary.v2.uploader.upload(path);
+  return data.secure_url;
+};
+
 //Cloudinary image delete
 export const cloudinaryImageDelete = async (publicId) => {
   await cloudinary.v2.uploader.destroy(publicId);

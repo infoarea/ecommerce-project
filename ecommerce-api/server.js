@@ -12,6 +12,7 @@ import roleRoute from "./routes/roleRutes.js";
 import brandRoute from "./routes/brandRutes.js";
 import tagRoute from "./routes/tagRutes.js";
 import categoryRoute from "./routes/categoryRoutes.js";
+import productRoute from "./routes/productRoutes.js";
 import authRoute from "./routes/authRoutes.js";
 
 // initialization
@@ -41,6 +42,7 @@ app.use("/api/v1/role", roleRoute);
 app.use("/api/v1/brand", brandRoute);
 app.use("/api/v1/tag", tagRoute);
 app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/product", productRoute);
 app.use("/api/v1/auth", authRoute);
 
 // error handler
