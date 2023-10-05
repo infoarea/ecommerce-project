@@ -67,7 +67,7 @@ export const createTag = asyncHandler(async (req, res) => {
 
   // check
   if (tag) {
-    return res.status(201).json({ message: "tag created successful", tag });
+    return res.status(201).json({ tag, message: "tag created successful" });
   } else {
     return res.status(400).json({ message: "Invalid tag data" });
   }

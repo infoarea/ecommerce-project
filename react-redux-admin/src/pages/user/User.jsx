@@ -207,6 +207,7 @@ const User = () => {
             />
           </div>
           <div className="my-3">
+            <label htmlFor="">Role</label>
             <select
               name=""
               id=""

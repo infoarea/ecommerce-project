@@ -14,5 +14,12 @@
   bottom: 25px;
 }
 .card-body {
-    padding: 1.5rem !important;
+  padding: 1.5rem !important;
+}
+
+.brand-table .rdt_TableHeadRow {
+  font-size: 18px !important;
+}
+.brand-table .rdt_TableBody div {
+  font-size: 15px !important;
 }

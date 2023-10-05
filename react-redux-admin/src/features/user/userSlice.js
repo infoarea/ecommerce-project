@@ -24,7 +24,7 @@ const userSlice = createSlice({
     role: null,
     user: null,
     error: null,
-    msg: null,
+    message: null,
   },
   reducers: {
     setMessageEmpty: (state, action) => {

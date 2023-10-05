@@ -11,6 +11,11 @@ import {
   getAllRoles,
   getAllUsers,
 } from "./features/user/userApiSlice";
+import {
+  getAllBrand,
+  getAllCategory,
+  getAllProductTag,
+} from "./features/product/productApiSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +30,11 @@ function App() {
     dispatch(getAllPermission());
     dispatch(getAllRoles());
     dispatch(getAllUsers());
+    dispatch(getAllBrand());
+    dispatch(getAllProductTag());
+    dispatch(getAllCategory());
   }, [dispatch]);
+
   return (
     <>
       <ToastContainer

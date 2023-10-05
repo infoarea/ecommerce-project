@@ -16,7 +16,13 @@ router.use(tokenVerify);
 
 // routing
 router.route("/").get(getAllTag).post(createTag);
-router.route("/:id").get(getSingleTag).delete(deleteTag).put(updateTag);
-router.route("/brand-status/:id").patch(updateTagStatus);
+router
+  .route("/:id")
+  .get(getSingleTag)
+  .delete(deleteTag)
+  .put(updateTag)
+  .patch(updateTag);
+router.route("/tag-status/:id").patch(updateTagStatus);
+router.route("/tag-status/:id").put(updateTagStatus);
 // export
 export default router;

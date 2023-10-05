@@ -39,24 +39,27 @@ const Sidebar = () => {
               )}
 
               {user?.role?.permissions?.includes("Category") && (
-                <li className="">
-                  <Link to={"/users"}>
+                <li
+                  className={location.pathname === "/category" ? "active" : ""}>
+                  <Link to={"/category"}>
                     <i className="fe fe-bar-chart"></i> <span>Category</span>
                   </Link>
                 </li>
               )}
 
               {user?.role?.permissions?.includes("Tag") && (
-                <li className="">
-                  <Link to={"/users"}>
+                <li className={location.pathname === "/tag" ? "active" : ""}>
+                  <Link to={"/tag"}>
                     <i className="fe fe-tag"></i> <span>Tags</span>
                   </Link>
                 </li>
               )}
-
               {user?.role?.permissions?.includes("Brands") && (
-                <li className="">
-                  <Link to={"/users"}>
+                <li
+                  className={`${
+                    location.pathname === "/brand" ? "active" : ""
+                  }`}>
+                  <Link to={"/brand"}>
                     <i className="fe fe-tag"></i> <span>Brands</span>
                   </Link>
                 </li>

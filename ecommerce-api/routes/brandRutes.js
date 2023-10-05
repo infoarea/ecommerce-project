@@ -24,5 +24,6 @@ router
   .put(brandLogo, updateBrand)
   .patch(brandLogo, updateBrand);
 router.route("/brand-status/:id").patch(updateBrandStatus);
+router.route("/brand-status/:id").put(updateBrandStatus);
 // export
 export default router;

@@ -67,8 +67,7 @@ export const createBrand = asyncHandler(async (req, res) => {
   let brandLogo = null;
 
   if (req.file) {
-    const logo = await cloudinaryUpload(req);
-    brandLogo = logo;
+    brandLogo = await cloudinaryUpload(req);
   }
 
   // create new brand data
@@ -118,6 +117,8 @@ export const updateBrand = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const { name } = req.body;
+
+  console.log(req.file);
 
   // validation
   if (!name) {

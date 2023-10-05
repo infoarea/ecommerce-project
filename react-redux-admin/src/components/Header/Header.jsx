@@ -3,6 +3,7 @@ import doctor from "../../assets/img/doctors/doctor-thumb-01.jpg";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../features/auth/authApiSlice";
 import UseAuthUser from "../../hooks/UseAuthUser";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user } = UseAuthUser();
@@ -15,17 +16,12 @@ const Header = () => {
     <>
       <div className="header">
         <div className="header-left">
-          <a href="index.html" className="logo">
+          <Link to={"/"} className="logo">
             <img src={Logo} alt="Logo" />
-          </a>
-          <a href="index.html" className="logo logo-small">
-            <img
-              src="assets/img/logo-small.png"
-              alt="Logo"
-              width="30"
-              height="30"
-            />
-          </a>
+          </Link>
+          <Link to={"/"} className="logo logo-small">
+            <img src={Logo} alt="Logo" width="30" height="30" />
+          </Link>
         </div>
 
         <a href="javascript:void(0);" id="toggle_btn">

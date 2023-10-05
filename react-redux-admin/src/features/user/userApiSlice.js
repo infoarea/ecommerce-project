@@ -201,7 +201,7 @@ export const updateUser = createAsyncThunk("user/updateUser", async (data) => {
         withCredentials: true,
       }
     );
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.message);
