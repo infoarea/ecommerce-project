@@ -9,6 +9,7 @@ import { timeAgo } from "../../helper/timeAgo";
 import swal from "sweetalert";
 
 import { setMessageEmpty } from "../../features/product/productSlice";
+import { createCategory } from "../../features/product/productApiSlice";
 
 const Category = () => {
   const { error, message, category, loader } = useSelector(
@@ -16,7 +17,6 @@ const Category = () => {
   );
 
   const [search, setSearch] = useState("");
-  const [photo, setPhoto] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const dispatch = useDispatch();
 
@@ -26,7 +26,26 @@ const Category = () => {
     icon: "",
   });
 
-  console.log(input);
+  //Cat photo change handler
+  const handleCatPhotoChange = (e) => {
+    setPhotoPreview(e.target.files[0]);
+  };
+
+  //Category form submit
+  const handleCatFormSubmit = (e) => {
+    e.preventDefault();
+
+    const form_data = new FormData();
+
+    form_data.append("name", input.name);
+    form_data.append("icon", input.icon);
+    form_data.append("parentCategory", input.parent);
+    form_data.append("catPhoto", photoPreview);
+
+    dispatch(createCategory(form_data));
+    resetForm();
+    setPhotoPreview(null);
+  };
 
   //Toaster message
   useEffect(() => {
@@ -46,7 +65,7 @@ const Category = () => {
 
       {/* Create brand modal */}
       <ModalPopup target="categoryModalPopup" title={"Add New Category"}>
-        <form>
+        <form onSubmit={handleCatFormSubmit}>
           <div className="my-3">
             <label htmlFor="">Category Name</label>
             <input
@@ -66,7 +85,7 @@ const Category = () => {
               className="form-control"
               onChange={handleInputChange}>
               <option>--select--</option>
-              {category.map((catItem, index) => {
+              {category?.map((catItem, index) => {
                 return (
                   <option value={catItem._id} key={index}>
                     {catItem.name}
@@ -88,12 +107,20 @@ const Category = () => {
           </div>
 
           <div className="my-3">
-            <img className="w-100" src={photoPreview} alt="" />
+            <img
+              className="w-100"
+              src={photoPreview && URL.createObjectURL(photoPreview)}
+              alt=""
+            />
           </div>
 
           <div className="my-3">
             <label htmlFor="">Category Photo</label>
-            <input type="file" className="form-control" />
+            <input
+              type="file"
+              className="form-control"
+              onChange={handleCatPhotoChange}
+            />
           </div>
 
           <div className="my-3">

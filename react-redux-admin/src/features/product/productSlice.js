@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   createBrand,
+  createCategory,
   createProductTag,
   deleteBrand,
   deleteProductTag,
@@ -142,6 +143,19 @@ const productSlice = createSlice({
       .addCase(getAllCategory.rejected, (state, action) => {
         state.loader = false;
         state.error = action.payload.error.message;
+      })
+      .addCase(createCategory.pending, (state, action) => {
+        state.loader = true;
+      })
+      .addCase(createCategory.fulfilled, (state, action) => {
+        state.loader = false;
+        state.category = state.category ?? [];
+        state.category.push(action.payload.category);
+        state.message = action.payload.message;
+      })
+      .addCase(createCategory.rejected, (state, action) => {
+        state.loader = false;
+        state.error = action.error.message;
       });
   },
 });
