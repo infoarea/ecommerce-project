@@ -59,6 +59,7 @@ export const updateBrand = createAsyncThunk(
         data,
         { withCredentials: true }
       );
+      console.log(data);
       return response.data;
     } catch (error) {
       throw new Error(error.response.data.message);
@@ -203,6 +204,43 @@ export const createCategory = createAsyncThunk(
         {
           withCredentials: true,
         }
+      );
+
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);
+
+//Category Delete
+export const deleteCategory = createAsyncThunk(
+  "product/deleteCategory",
+  async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5050/api/v1/category/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);
+
+//Update Category
+export const updateCategory = createAsyncThunk(
+  "product/updateCategory",
+  async ({ id, data }) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:5050/api/v1/category/${id}`,
+        data,
+        { withCredentials: true }
       );
 
       return response.data;

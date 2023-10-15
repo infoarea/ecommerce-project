@@ -4,12 +4,14 @@ import {
   createCategory,
   createProductTag,
   deleteBrand,
+  deleteCategory,
   deleteProductTag,
   getAllBrand,
   getAllCategory,
   getAllProductTag,
   updateBrand,
   updateBrandStatus,
+  updateCategory,
   updateTagStatus,
 } from "./productApiSlice";
 
@@ -156,6 +158,17 @@ const productSlice = createSlice({
       .addCase(createCategory.rejected, (state, action) => {
         state.loader = false;
         state.error = action.error.message;
+      })
+      .addCase(deleteCategory.fulfilled, (state, action) => {
+        state.category = state.category.filter(
+          (data) => data._id !== action.payload.category._id
+        );
+        state.message = action.payload.message;
+        state.loader = false;
+      })
+      .addCase(deleteCategory.rejected, (state, action) => {
+        state.loader = false;
+        state.message = action.error.message;
       });
   },
 });
